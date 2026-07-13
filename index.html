@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Pharmacy Online - Apotek Digital Terpercaya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<base target="_blank">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="#home" class="logo">
+                <div class="logo-icon"><i class="fas fa-mortar-pestle"></i></div>
+                <span>MediCare</span>
+            </a>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="active">Beranda</a></li>
+                <li><a href="#products">Produk</a></li>
+                <li><a href="#upload">Resep</a></li>
+                <li><a href="#consult">Konsultasi</a></li>
+                <li><a href="#articles">Artikel</a></li>
+                <li><a href="#about">Tentang</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Cari obat, vitamin..." id="searchInput">
+                </div>
+                <button class="cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="btn btn-primary" onclick="openModal('loginModal')">
+                    <i class="fas fa-user"></i> Masuk
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="mobile-menu-header">
+            <div class="logo-icon"><i class="fas fa-mortar-pestle"></i></div>
+            <span>MediCare</span>
+        </div>
+        <ul>
+            <li><a href="#home" onclick="toggleMobileMenu()"><i class="fas fa-home"></i> Beranda</a></li>
+            <li><a href="#products" onclick="toggleMobileMenu()"><i class="fas fa-pills"></i> Produk</a></li>
+            <li><a href="#upload" onclick="toggleMobileMenu()"><i class="fas fa-upload"></i> Upload Resep</a></li>
+            <li><a href="#consult" onclick="toggleMobileMenu()"><i class="fas fa-user-md"></i> Konsultasi</a></li>
+            <li><a href="#articles" onclick="toggleMobileMenu()"><i class="fas fa-newspaper"></i> Artikel</a></li>
+            <li><a href="#about" onclick="toggleMobileMenu()"><i class="fas fa-info-circle"></i> Tentang</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-inner">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-shield-alt"></i> Apotek Online Terpercaya
+                </div>
+                <h1>Solusi Kesehatan <em>Mudah & Cepat</em></h1>
+                <p>Beli obat, vitamin, dan alat kesehatan secara online. Konsultasi dengan apoteker profesional dan upload resep dokter dengan mudah.</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-lg" onclick="scrollToSection('products')">
+                        <i class="fas fa-shopping-bag"></i> Belanja Sekarang
+                    </button>
+                    <button class="btn btn-outline btn-lg" onclick="scrollToSection('consult')">
+                        <i class="fas fa-comments"></i> Konsultasi
+                    </button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Pelanggan Puas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Produk Tersedia</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Layanan Online</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <svg class="hero-image-main" viewBox="0 0 480 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="hero-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0f766e;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="hero-grad-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#d1fae5;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ccfbf1;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect x="60" y="40" width="360" height="320" rx="24" fill="url(#hero-grad-2)"/>
+                    <circle cx="240" cy="180" r="100" fill="url(#hero-grad-1)" opacity="0.1"/>
+                    <rect x="180" y="100" width="120" height="160" rx="16" fill="url(#hero-grad-1)" opacity="0.9"/>
+                    <rect x="140" y="140" width="200" height="80" rx="16" fill="url(#hero-grad-1)" opacity="0.9"/>
+                    <rect x="190" y="110" width="100" height="140" rx="12" fill="white"/>
+                    <rect x="150" y="150" width="180" height="60" rx="12" fill="white"/>
+                    <text x="240" y="190" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="32" fill="url(#hero-grad-1)">+</text>
+                    <circle cx="100" cy="120" r="20" fill="#f59e0b" opacity="0.8"/>
+                    <rect x="90" y="112" width="20" height="16" rx="8" fill="white" opacity="0.6"/>
+                    <circle cx="380" cy="140" r="16" fill="#ef4444" opacity="0.8"/>
+                    <rect x="372" y="134" width="16" height="12" rx="6" fill="white" opacity="0.6"/>
+                    <circle cx="90" cy="300" r="18" fill="#10b981" opacity="0.8"/>
+                    <circle cx="90" cy="300" r="10" fill="white" opacity="0.5"/>
+                    <circle cx="390" cy="310" r="14" fill="#8b5cf6" opacity="0.8"/>
+                    <circle cx="390" cy="310" r="8" fill="white" opacity="0.5"/>
+                    <path d="M240 340 C240 340, 200 310, 200 280 C200 260, 215 252, 228 252 C236 252, 240 260, 240 260 C240 260, 244 252, 252 252 C265 252, 280 260, 280 280 C280 310, 240 340, 240 340Z" fill="#ef4444" opacity="0.5"/>
+                    <path d="M80 220 Q80 180, 120 180 Q160 180, 160 220" stroke="#059669" stroke-width="6" fill="none" opacity="0.5"/>
+                    <circle cx="80" cy="220" r="12" fill="#059669" opacity="0.5"/>
+                    <circle cx="160" cy="220" r="12" fill="#059669" opacity="0.5"/>
+                </svg>
+                <div class="floating-card card-1">
+                    <div class="floating-card-icon" style="background: #dcfce7; color: #166534;">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div>
+                        <div class="floating-card-text">Pengiriman Cepat</div>
+                        <div class="floating-card-sub">1-2 Jam Jakarta</div>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="floating-card-icon" style="background: #dbeafe; color: #1e40af;">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div>
+                        <div class="floating-card-text">100% Original</div>
+                        <div class="floating-card-sub">BPOM Certified</div>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="floating-card-icon" style="background: #fef3c7; color: #92400e;">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div>
+                        <div class="floating-card-text">Diskon 20%</div>
+                        <div class="floating-card-sub">Pembelian Pertama</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section" id="categories">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-th-large"></i> Kategori</span>
+            <h2>Jelajahi Kategori Produk</h2>
+            <p>Temukan berbagai kebutuhan kesehatan Anda dengan mudah dan cepat</p>
+        </div>
+        <div class="categories-grid reveal">
+            <div class="category-card" onclick="filterProducts('obat')">
+                <div class="category-icon" style="background: #fef2f2; color: #dc2626;">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <h3>Obat</h3>
+                <p>Obat flu, demam, pencernaan, alergi & kulit</p>
+            </div>
+            <div class="category-card" onclick="filterProducts('vitamin')">
+                <div class="category-icon" style="background: #fefce8; color: #ca8a04;">
+                    <i class="fas fa-apple-alt"></i>
+                </div>
+                <h3>Vitamin</h3>
+                <p>Vitamin C, D, multivitamin & imunitas</p>
+            </div>
+            <div class="category-card" onclick="filterProducts('alat')">
+                <div class="category-icon" style="background: #eff6ff; color: #2563eb;">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h3>Alat Kesehatan</h3>
+                <p>Termometer, tensimeter, masker & oksimeter</p>
+            </div>
+            <div class="category-card" onclick="scrollToSection('upload')">
+                <div class="category-icon" style="background: #f0fdf4; color: #16a34a;">
+                    <i class="fas fa-file-prescription"></i>
+                </div>
+                <h3>Resep Dokter</h3>
+                <p>Upload resep & verifikasi apoteker</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="section products-section" id="products">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-fire"></i> Produk Terlaris</span>
+            <h2>Produk Unggulan Kami</h2>
+            <p>Pilihan produk kesehatan terbaik dengan harga terjangkau</p>
+        </div>
+
+        <!-- Promo Banner -->
+        <div class="promo-banner reveal">
+            <div class="promo-banner-text">
+                <i class="fas fa-bolt"></i>
+                <span>Flash Sale! Diskon hingga 50% untuk pembelian hari ini</span>
+            </div>
+            <div class="promo-countdown" id="promoCountdown">
+                <div class="countdown-item">
+                    <div class="num" id="cdHours">04</div>
+                    <div class="label">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="num" id="cdMinutes">32</div>
+                    <div class="label">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="num" id="cdSeconds">15</div>
+                    <div class="label">Detik</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal">
+            <button class="filter-tab active" onclick="setFilter('all', this)">
+                <i class="fas fa-th-large"></i> Semua
+            </button>
+            <button class="filter-tab" onclick="setFilter('obat', this)">
+                <i class="fas fa-pills"></i> Obat
+            </button>
+            <button class="filter-tab" onclick="setFilter('vitamin', this)">
+                <i class="fas fa-apple-alt"></i> Vitamin
+            </button>
+            <button class="filter-tab" onclick="setFilter('alat', this)">
+                <i class="fas fa-stethoscope"></i> Alat Kesehatan
+            </button>
+            <button class="filter-tab" onclick="setFilter('ibu-anak', this)">
+                <i class="fas fa-baby"></i> Ibu & Anak
+            </button>
+            <button class="filter-tab" onclick="setFilter('kecantikan', this)">
+                <i class="fas fa-spa"></i> Kecantikan
+            </button>
+        </div>
+
+        <div class="products-grid reveal" id="productsGrid"></div>
+    </section>
+
+    <!-- Features -->
+    <section class="section features-section" id="features">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-star"></i> Mengapa Kami</span>
+            <h2>Keunggulan MediCare Pharmacy</h2>
+            <p>Kami hadir untuk memberikan pelayanan kesehatan terbaik bagi Anda dan keluarga</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Tampilan Responsif</h3>
+                <p>Akses website dari HP, tablet, atau laptop dengan tampilan yang optimal dan mudah digunakan.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon" style="background: rgba(14, 165, 233, 0.15); color: #0ea5e9;">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3>Konsultasi Apoteker</h3>
+                <p>Konsultasi kesehatan online dengan apoteker berpengalaman kapan saja Anda butuhkan.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-icon" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">
+                    <i class="fas fa-file-upload"></i>
+                </div>
+                <h3>Upload Resep</h3>
+                <p>Unggah resep dokter Anda, tim apoteker kami akan verifikasi dan proses pesanan Anda.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-1">
+                <div class="feature-icon" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3>Pembayaran Digital</h3>
+                <p>Berbagai metode pembayaran digital yang aman dan praktis untuk kenyamanan Anda.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-2">
+                <div class="feature-icon" style="background: rgba(239, 68, 68, 0.15); color: #ef4444;">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Pengiriman Cepat</h3>
+                <p>Layanan pengiriman obat ke rumah dengan estimasi waktu yang cepat dan terjamin.</p>
+            </div>
+            <div class="feature-card reveal reveal-delay-3">
+                <div class="feature-icon" style="background: rgba(255, 255, 255, 0.1); color: white;">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <h3>Keamanan Data</h3>
+                <p>Keamanan data pengguna terjamin dengan enkripsi dan sistem perlindungan privasi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upload Resep -->
+    <section class="section upload-section" id="upload">
+        <div class="upload-container">
+            <div class="upload-content reveal">
+                <span class="section-badge"><i class="fas fa-file-prescription"></i> Upload Resep</span>
+                <h2>Upload Resep Dokter dengan Mudah</h2>
+                <p>Tidak perlu antre di apotek. Upload resep dokter Anda, tim apoteker kami akan verifikasi dan proses pesanan Anda dengan cepat.</p>
+                <div class="upload-steps">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">
+                            <h4>Foto Resep</h4>
+                            <p>Ambil foto resep dokter dengan jelas dan pencahayaan baik</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">
+                            <h4>Upload & Verifikasi</h4>
+                            <p>Upload resep dan tunggu verifikasi oleh apoteker profesional</p>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">
+                            <h4>Konfirmasi Pembelian</h4>
+                            <p>Setelah terverifikasi, konfirmasi pesanan dan lakukan pembayaran</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="upload-area reveal" id="uploadArea" onclick="document.getElementById('resepInput').click()">
+                <input type="file" id="resepInput" style="display: none;" accept="image/*">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h3>Upload Resep Dokter</h3>
+                <p>Seret file ke sini atau klik untuk memilih file (JPG, PNG, PDF)</p>
+                <button class="btn btn-primary">
+                    <i class="fas fa-camera"></i> Pilih File
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation -->
+    <section class="section consult-section" id="consult">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-user-md"></i> Konsultasi</span>
+            <h2>Konsultasi dengan Apoteker</h2>
+            <p>Tanyakan kesehatan Anda kepada apoteker profesional kami</p>
+        </div>
+        <div class="consult-grid">
+            <div class="consult-card reveal reveal-delay-1">
+                <div class="consult-avatar">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
+                <div class="consult-info">
+                    <h3>dr. Ahmad Santoso, Apt.</h3>
+                    <div class="role">Apoteker Senior</div>
+                    <div class="desc">Spesialisasi dalam farmasi klinis dan konsultasi obat resep. Pengalaman 10+ tahun di bidang farmasi.</div>
+                    <div class="consult-status status-online">
+                        <span class="status-dot"></span> Online
+                    </div>
+                    <button class="btn btn-primary btn-sm consult-btn" onclick="toggleChat()">
+                        <i class="fas fa-comment-dots"></i> Chat Sekarang
+                    </button>
+                </div>
+            </div>
+            <div class="consult-card reveal reveal-delay-2">
+                <div class="consult-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
+                <div class="consult-info">
+                    <h3>dr. Rina Wulandari, Apt.</h3>
+                    <div class="role">Apoteker Umum</div>
+                    <div class="desc">Ahli dalam vitamin dan suplemen kesehatan. Siap membantu memilih produk yang tepat untuk kebutuhan Anda.</div>
+                    <div class="consult-status status-online">
+                        <span class="status-dot"></span> Online
+                    </div>
+                    <button class="btn btn-primary btn-sm consult-btn" onclick="toggleChat()">
+                        <i class="fas fa-comment-dots"></i> Chat Sekarang
+                    </button>
+                </div>
+            </div>
+            <div class="consult-card reveal reveal-delay-3">
+                <div class="consult-avatar">&#x1F468;&#x200D;&#x2695;&#xFE0F;</div>
+                <div class="consult-info">
+                    <h3>dr. Budi Hartono, Apt.</h3>
+                    <div class="role">Apoteker Spesialis</div>
+                    <div class="desc">Spesialis alat kesehatan dan perawatan luka. Konsultasi pemakaian alat kesehatan yang tepat.</div>
+                    <div class="consult-status status-busy">
+                        <span class="status-dot"></span> Sibuk
+                    </div>
+                    <button class="btn btn-outline btn-sm consult-btn" onclick="toggleChat()">
+                        <i class="fas fa-bell"></i> Notifikasi
+                    </button>
+                </div>
+            </div>
+            <div class="consult-card reveal reveal-delay-4">
+                <div class="consult-avatar">&#x1F469;&#x200D;&#x2695;&#xFE0F;</div>
+                <div class="consult-info">
+                    <h3>dr. Siti Nurhaliza, Apt.</h3>
+                    <div class="role">Apoteker Klinis</div>
+                    <div class="desc">Spesialisasi dalam obat-obatan untuk penyakit kronis dan manajemen terapi jangka panjang.</div>
+                    <div class="consult-status status-online">
+                        <span class="status-dot"></span> Online
+                    </div>
+                    <button class="btn btn-primary btn-sm consult-btn" onclick="toggleChat()">
+                        <i class="fas fa-comment-dots"></i> Chat Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-heart"></i> Testimoni</span>
+            <h2>Apa Kata Pelanggan Kami</h2>
+            <p>Pengalaman nyata dari pelanggan yang telah menggunakan layanan MediCare Pharmacy</p>
+        </div>
+        <div class="testimonials-grid reveal">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="testimonial-text">"Pelayanan sangat cepat dan ramah. Obat yang saya pesan sampai dalam waktu 2 jam. Sangat recommended untuk yang butuh obat darurat!"</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">&#x1F468;</div>
+                    <div>
+                        <div class="testimonial-name">Budi Santoso</div>
+                        <div class="testimonial-role">Jakarta Selatan</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <div class="testimonial-text">"Upload resep dokter sangat mudah. Apotekernya juga responsif dan memberikan penjelasan yang detail tentang cara minum obatnya."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">&#x1F469;</div>
+                    <div>
+                        <div class="testimonial-name">Ani Wulandari</div>
+                        <div class="testimonial-role">Bandung</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="testimonial-text">"Harga lebih murah dibanding apotek offline. Produk original dan packaging aman. Sudah langganan beli vitamin di sini setiap bulan."</div>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">&#x1F468;</div>
+                    <div>
+                        <div class="testimonial-name">Dedi Kurniawan</div>
+                        <div class="testimonial-role">Surabaya</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles -->
+    <section class="section" id="articles">
+        <div class="section-header reveal">
+            <span class="section-badge"><i class="fas fa-newspaper"></i> Artikel Kesehatan</span>
+            <h2>Tips & Informasi Kesehatan</h2>
+            <p>Baca artikel kesehatan terbaru untuk menjaga kesehatan Anda dan keluarga</p>
+        </div>
+        <div class="articles-grid reveal">
+            <div class="article-card">
+                <div class="article-image">&#x1F9A0;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 15 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 5 menit</span>
+                    </div>
+                    <h3>Cara Meningkatkan Imunitas Tubuh Secara Alami</h3>
+                    <p>Tips praktis untuk menjaga sistem imun tetap kuat dengan pola makan sehat dan gaya hidup aktif setiap hari.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">&#x1F48A;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 12 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 7 menit</span>
+                    </div>
+                    <h3>Panduan Lengkap Penggunaan Paracetamol yang Aman</h3>
+                    <p>Pelajari dosis yang tepat, efek samping, dan kapan harus menghubungi dokter untuk bantuan.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">&#x1F3C3;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 10 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 4 menit</span>
+                    </div>
+                    <h3>5 Vitamin Esensial untuk Aktivitas Sehari-hari</h3>
+                    <p>Vitamin apa saja yang paling penting untuk tubuh dan bagaimana mendapatkannya dari makanan sehari-hari.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">&#x1F6B0;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 8 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 6 menit</span>
+                    </div>
+                    <h3>Cara Mengatasi Stres dan Kecemasan dengan Alami</h3>
+                    <p>Teknik relaksasi dan suplemen yang dapat membantu mengelola stres dan kecemasan sehari-hari.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">&#x1F476;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 5 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 8 menit</span>
+                    </div>
+                    <h3>Panduan Nutrisi Lengkap untuk Bayi 0-12 Bulan</h3>
+                    <p>ASI, MPASI, dan suplemen yang dibutuhkan bayi untuk tumbuh kembang optimal.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="article-card">
+                <div class="article-image">&#x1F957;</div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar"></i> 2 Jul 2026</span>
+                        <span><i class="fas fa-clock"></i> 5 menit</span>
+                    </div>
+                    <h3>Menu Sehat untuk Penderita Diabetes Tipe 2</h3>
+                    <p>Rekomendasi makanan dan pola makan yang aman untuk menjaga gula darah tetap stabil.</p>
+                    <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="section about-section" id="about">
+        <div class="about-grid">
+            <div class="about-image reveal">
+                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="about-grad-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#0f766e;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <rect width="500" height="400" rx="24" fill="#f0fdf4"/>
+                    <rect x="50" y="50" width="400" height="300" rx="20" fill="url(#about-grad-1)" opacity="0.08"/>
+                    <circle cx="250" cy="160" r="70" fill="url(#about-grad-1)" opacity="0.15"/>
+                    <rect x="210" y="120" width="80" height="80" rx="12" fill="white" opacity="0.9"/>
+                    <rect x="170" y="150" width="160" height="20" rx="10" fill="white" opacity="0.9"/>
+                    <text x="250" y="170" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="28" fill="url(#about-grad-1)">+</text>
+                    <rect x="100" y="240" width="100" height="70" rx="12" fill="white" opacity="0.9"/>
+                    <rect x="110" y="250" width="80" height="12" rx="6" fill="#e2e8f0"/>
+                    <rect x="110" y="268" width="60" height="8" rx="4" fill="#e2e8f0"/>
+                    <rect x="110" y="282" width="50" height="8" rx="4" fill="#e2e8f0"/>
+                    <rect x="300" y="240" width="100" height="70" rx="12" fill="white" opacity="0.9"/>
+                    <rect x="310" y="250" width="80" height="12" rx="6" fill="#e2e8f0"/>
+                    <rect x="310" y="268" width="60" height="8" rx="4" fill="#e2e8f0"/>
+                    <rect x="310" y="282" width="50" height="8" rx="4" fill="#e2e8f0"/>
+                    <circle cx="160" cy="200" r="12" fill="#f59e0b" opacity="0.7"/>
+                    <circle cx="340" cy="200" r="12" fill="#ef4444" opacity="0.7"/>
+                    <circle cx="250" cy="220" r="10" fill="#10b981" opacity="0.7"/>
+                </svg>
+            </div>
+            <div class="about-content reveal">
+                <span class="section-badge"><i class="fas fa-info-circle"></i> Tentang Kami</span>
+                <h2>MediCare Pharmacy Online</h2>
+                <p>MediCare Pharmacy Online adalah platform digital yang menyediakan layanan pembelian obat, vitamin, alat kesehatan, konsultasi apoteker, serta informasi kesehatan secara online.</p>
+                <p>Kami berkomitmen untuk memudahkan masyarakat memperoleh kebutuhan kesehatan tanpa harus datang langsung ke apotek. Dengan layanan 24 jam dan pengiriman cepat, kesehatan Anda adalah prioritas utama kami.</p>
+                <div class="about-features">
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>Legalitas Resmi</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>Produk BPOM</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>Harga Terjangkau</span></div>
+                    <div class="about-feature"><i class="fas fa-check-circle"></i><span>Garansi Asli</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3><i class="fas fa-mortar-pestle"></i> MediCare Pharmacy</h3>
+                    <p>Platform apotek online terpercaya yang menyediakan layanan kesehatan lengkap dengan kemudahan akses 24/7 untuk Anda dan keluarga.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Menu Cepat</h4>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Beranda</a></li>
+                        <li><a href="#products"><i class="fas fa-chevron-right"></i> Produk</a></li>
+                        <li><a href="#upload"><i class="fas fa-chevron-right"></i> Upload Resep</a></li>
+                        <li><a href="#consult"><i class="fas fa-chevron-right"></i> Konsultasi</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Layanan</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Beli Obat</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Konsultasi</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Tracking</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Artikel</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Kontak</h4>
+                    <ul>
+                        <li><a href="tel:085280694058"><i class="fas fa-phone"></i> 0852-8069-4058</a></li>
+                        <li><a href="mailto:info@medicare.id"><i class="fas fa-envelope"></i> info@medicare.id</a></li>
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> Kendari, Indonesia</a></li>
+                        <li><a href="#"><i class="fas fa-clock"></i> 24 Jam Online</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MediCare Pharmacy Online. All rights reserved.</p>
+                <p>
+                    <a href="#" style="color: var(--gray-500); text-decoration: none;">Kebijakan Privasi</a>
+                    <span style="color: var(--gray-600); margin: 0 0.5rem;">|</span>
+                    <a href="#" style="color: var(--gray-500); text-decoration: none;">Syarat & Ketentuan</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Keranjang</h2>
+            <button class="modal-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-basket"></i>
+                <span>Keranjang masih kosong</span>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span class="total-price" id="cartTotal">Rp 0</span>
+            </div>
+            <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="checkout()">
+                <i class="fas fa-credit-card"></i> Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-circle"></i> Masuk ke Akun</h2>
+                <button class="modal-close" onclick="closeModal('loginModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="nama@email.com" id="loginEmail">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Masukkan password" id="loginPassword">
+                </div>
+                <div style="text-align: right; margin-bottom: 0.5rem;">
+                    <a href="#" style="color: var(--primary); font-size: 0.8125rem; text-decoration: none; font-weight: 500;">Lupa password?</a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('loginModal')">Batal</button>
+                <button class="btn btn-primary" onclick="login()">Masuk</button>
+            </div>
+            <div class="modal-switch">
+                Belum punya akun? <a href="#" onclick="switchModal('loginModal', 'registerModal')">Daftar Sekarang</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div class="modal-overlay" id="registerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-plus"></i> Daftar Akun Baru</h2>
+                <button class="modal-close" onclick="closeModal('registerModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Nama lengkap Anda" id="regName">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" placeholder="nama@email.com" id="regEmail">
+                </div>
+                <div class="form-group">
+                    <label>No. Telepon</label>
+                    <input type="tel" placeholder="0812xxxxxxx" id="regPhone">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" placeholder="Minimal 8 karakter" id="regPassword">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('registerModal')">Batal</button>
+                <button class="btn btn-primary" onclick="register()">Daftar</button>
+            </div>
+            <div class="modal-switch">
+                Sudah punya akun? <a href="#" onclick="switchModal('registerModal', 'loginModal')">Masuk</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal-overlay" id="checkoutModal">
+        <div class="modal" style="max-width: 480px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-credit-card"></i> Checkout</h2>
+                <button class="modal-close" onclick="closeModal('checkoutModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Nama Pembeli</label>
+                    <input type="text" placeholder="Nama lengkap Anda" id="checkoutName">
+                </div>
+                <div class="form-group">
+                    <label>No. Telepon</label>
+                    <input type="tel" placeholder="0812xxxxxxx" id="checkoutPhone">
+                </div>
+                <div class="form-group">
+                    <label>Alamat Pengiriman</label>
+                    <textarea placeholder="Masukkan alamat lengkap pengiriman" id="checkoutAddress"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Metode Pembayaran</label>
+                    <select id="checkoutPayment" onchange="onPaymentChange(this.value)">
+                        <option value="">Pilih metode pembayaran</option>
+                        <option value="bca">Transfer Bank BCA</option>
+                        <option value="dana">E-Wallet DANA</option>
+                        <option value="qris">QRIS</option>
+                    </select>
+                </div>
+                <div id="paymentDetails" style="display: none;"></div>
+                <div class="form-group" id="uploadBuktiGroup" style="display: none;">
+                    <label>Upload Bukti Transfer <span style="color: var(--danger);">*</span></label>
+                    <div class="upload-bukti-area" id="uploadBuktiArea" onclick="document.getElementById('buktiInput').click()">
+                        <input type="file" id="buktiInput" style="display: none;" accept="image/*" onchange="onBuktiSelected(this)">
+                        <i class="fas fa-receipt" id="buktiIcon"></i>
+                        <span id="buktiText">Klik untuk upload bukti transfer</span>
+                        <small style="color: var(--gray-400); margin-top: 0.25rem; display: block;">Format: JPG, PNG (Max 5MB)</small>
+                    </div>
+                    <div id="buktiPreview" style="display: none; margin-top: 0.75rem;">
+                        <img id="buktiPreviewImg" style="max-width: 100%; border-radius: var(--radius); border: 1px solid var(--gray-200);">
+                        <button type="button" class="btn btn-sm btn-outline" style="margin-top: 0.5rem;" onclick="removeBukti()">
+                            <i class="fas fa-trash"></i> Ganti File
+                        </button>
+                    </div>
+                </div>
+                <div style="background: var(--gray-50); padding: 1rem; border-radius: var(--radius-lg); margin-top: 0.5rem;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem;">
+                        <span style="color: var(--gray-500);">Subtotal</span>
+                        <span style="font-weight: 600; color: var(--gray-700);" id="checkoutSubtotal">Rp 0</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem;">
+                        <span style="color: var(--gray-500);">Ongkir</span>
+                        <span style="font-weight: 600; color: var(--gray-700);">Rp 15.000</span>
+                    </div>
+                    <div style="border-top: 1px solid var(--gray-200); padding-top: 0.5rem; display: flex; justify-content: space-between;">
+                        <span style="font-weight: 700; color: var(--gray-800);">Total</span>
+                        <span style="font-weight: 800; color: var(--primary); font-size: 1.125rem;" id="checkoutTotal">Rp 0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeModal('checkoutModal')">Batal</button>
+                <button class="btn btn-primary" onclick="processOrder()">Bayar Sekarang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nota / Invoice Modal -->
+    <div class="modal-overlay" id="notaModal">
+        <div class="modal" style="max-width: 520px;">
+            <div class="modal-header">
+                <h2><i class="fas fa-receipt"></i> Nota Pembelian</h2>
+                <button class="modal-close" onclick="closeModal('notaModal')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="notaContent" style="padding: 0;">
+            </div>
+            <div class="modal-footer" style="flex-wrap: wrap; gap: 0.5rem;">
+                <button class="btn btn-outline" onclick="closeModal('notaModal')" style="flex: 1; min-width: 120px;">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+                <button class="btn btn-primary" onclick="printNota()" style="flex: 1; min-width: 120px; background: var(--gray-700);">
+                    <i class="fas fa-print"></i> Print Nota
+                </button>
+                <button class="btn btn-primary" onclick="kirimWaNota()" style="flex: 1; min-width: 120px; background: #25D366;">
+                    <i class="fab fa-whatsapp"></i> Kirim ke WA
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Print-only nota (hidden) -->
+    <div id="printNota" style="display: none;"></div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-box" id="chatBox">
+            <div class="chat-header">
+                <h3><i class="fas fa-headset"></i> Konsultasi Apoteker</h3>
+                <button style="background: none; border: none; color: white; cursor: pointer; font-size: 0.875rem;" onclick="toggleChat()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot">Halo! Saya asisten virtual MediCare. Ada yang bisa saya bantu terkait kesehatan atau produk kami? &#x1F44B;</div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Ketik pesan Anda..." id="chatInput" onkeypress="if(event.key==='Enter')sendChat()">
+                <button onclick="sendChat()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+        <button class="chat-toggle" onclick="toggleChat()">
+            <i class="fas fa-comments"></i>
+        </button>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
